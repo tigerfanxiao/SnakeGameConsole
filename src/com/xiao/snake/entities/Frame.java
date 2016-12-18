@@ -1,6 +1,6 @@
 package com.xiao.snake.entities;
 
-public class Boarder00 extends Panel {
+public class Frame extends Panel {
 	
 	public static void makeBoarder() {
 		for(int i = 0; i < Panel.panel.length; i++) {

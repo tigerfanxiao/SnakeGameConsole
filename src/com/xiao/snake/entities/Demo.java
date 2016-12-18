@@ -46,17 +46,17 @@ package com.xiao.snake.entities;
 
 
 
-public class Demo00 {
+public class Demo {
 	public static void main(String[] args) throws InterruptedException  {
 		System.out.println("Hello world!");
 		//		Boarder00 boarder00 = new Boarder00();
-		Food00 food00 = new Food00();
+		Food food00 = new Food();
 //		画出边界
-		Boarder00.makeBoarder();
+		Frame.makeBoarder();
 //		随机生成食物
 		food00.showFood(food00.foodGenerate());
 //		创蛇
-		Snake00 snake00 = new Snake00();
+		Snake snake00 = new Snake();
 //		蛇在初始位置
 		snake00.initiateSnake();
 		Panel.changePoint(5, 18, '@');

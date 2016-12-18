@@ -3,7 +3,7 @@ package com.xiao.snake.entities;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Snake00 extends Panel{
+public class Snake extends Panel{
 	
 	static int beginWidth = Panel.PANEL_WIDTH / 2;
 	static int beginHeight = Panel.PANEL_HEIGHT / 2;

@@ -2,7 +2,7 @@ package com.xiao.snake.entities;
 
 import java.util.Random;
 
-public class Food00 extends Panel {
+public class Food extends Panel {
 	
 	int x;
 	int y;
