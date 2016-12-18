@@ -1,5 +1,9 @@
 package com.xiao.snake.entities;
-
+/**
+ * class of coordinate of each point on he panel
+ * @author Xiao
+ *
+ */
 public class Point {
 	private int height;
 	private int width;

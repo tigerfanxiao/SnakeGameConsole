@@ -6,15 +6,18 @@ import java.util.LinkedList;
 import com.xiao.snake.view.console.Panel;
 
 public class Snake extends Panel {
-	
+	//the coordinate where initiate a snake on panel
 	int beginWidth = getWidth() / 2;
 	int beginHeight = getHeight() / 2;
-	int lengthOfSnake = 4; 
+	int lengthOfSnake = 4; //the length of snake
 	char direction;
 	Point head = new Point(beginHeight, beginWidth);
-	
+	//the coordinate of the position of snake is stored in a linkedlist
 	LinkedList<Point> snake = new LinkedList<>();
 
+	/**
+	 * initiate the instance of snake and show it on the panel with coordinate
+	 */
 	public void initiateSnake() {
 		//画出蛇的初始位置
 		snake.addLast(head);
@@ -22,7 +25,9 @@ public class Snake extends Panel {
 			snake.addLast(new Point(head.getY(), head.getX() - i));
 		}
 	}
-	
+	/**
+	 * store the mark of head and body of the snake with the coordinate list of snake
+	 */
 	public void drawSnake() {
 		Iterator<Point> snakeIterator = snake.iterator();
 		while(snakeIterator.hasNext()) {
@@ -37,6 +42,10 @@ public class Snake extends Panel {
  * 
  * 问题: 这个方法内部定义了2个方向, 一个是无干扰下的下一个节点位置, 一个是键盘给出的下一个节点位置
  * 其实, 可以在snake类中设置两个成员变量, 保存当前蛇的方向状态, 和键盘要改变的状态, 分别用 +1 -1, +2, -2 表示4个方向
+ */
+/**
+ * 
+ * @param char direction
  */
 	public void snakeMove(char direction) {
 		//nextHeadOrinigal 指在无外界干扰的情况下, 蛇头出现的下一个结点的位置
@@ -83,6 +92,10 @@ public class Snake extends Panel {
 		
 	}
 //	判断蛇的前进方向, 将自然情况下, 蛇头的下一个节点保存在nextPoint中
+	/**
+	 * 
+	 * @return the next point where the head of snake would show if no command of changing direction 
+	 */
 	public Point snakeDirection() {
 		Point nextPoint;
 		if(snake.get(0).getY() == snake.get(1).getY()) {
