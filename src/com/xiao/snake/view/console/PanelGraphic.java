@@ -1,4 +1,4 @@
-package com.xiao.snake.entities;
+package com.xiao.snake.view.console;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,21 +8,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PanelGraphic extends JPanel{
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4802952222127167572L;
 
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.GRAY);
-		
-		
-		
-		
-		
 		g.fill3DRect(0, 0, 20, 20, true);
-		
-		
-		
-		
 		g.setColor(Color.RED);
 		g.setFont(new Font("ËÎÌו", Font.BOLD, 20));
 		g.drawString("Game Over", 350, 200);
@@ -34,7 +28,6 @@ public class PanelGraphic extends JPanel{
 		PanelGraphic panel = new PanelGraphic();
 		frame.add(panel);
 		panel.setVisible(true);
-		FrameInitiation.FrameInit(frame, 500, 700);
-		
+		FrameInitiation.FrameInit(frame, 500, 700);	
 	}
 }

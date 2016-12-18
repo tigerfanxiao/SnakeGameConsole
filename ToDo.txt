@@ -1,4 +1,3 @@
-package com.xiao.snake.entities;
 /*
  * 这个项目有几个问题:
  * 1. 没有做蛇碰到边界退出的功能
@@ -43,65 +42,3 @@ package com.xiao.snake.entities;
  * 在地图上随机生成食物, 但是不会出现在蛇的身上, 也不会出现在边框上
  * 
  */
-
-
-
-public class Demo {
-	public static void main(String[] args) throws InterruptedException  {
-		System.out.println("Hello world!");
-		//		Boarder00 boarder00 = new Boarder00();
-		Food food00 = new Food();
-//		画出边界
-		Frame.makeBoarder();
-//		随机生成食物
-		food00.showFood(food00.foodGenerate());
-//		创蛇
-		Snake snake00 = new Snake();
-//		蛇在初始位置
-		snake00.initiateSnake();
-		Panel.changePoint(5, 18, '@');
-		Panel.changePoint(5, 20, '@');
-		
-		for(int i = 0; i < 5; i++) {
-			snake00.snakeMove('R');
-			snake00.drawSnake();
-			Thread.sleep(500);
-			Panel.printPanel();
-		}
-		
-		for(int i = 0; i < 3; i++) {
-			snake00.snakeMove('U');
-			snake00.drawSnake();
-			Thread.sleep(500);
-			Panel.printPanel();
-		}
-		
-		for(int i = 0; i < 3; i++) {
-			snake00.snakeMove('L');
-			snake00.drawSnake();
-			Thread.sleep(500);
-			Panel.printPanel();
-		}
-		
-		for(int i = 0; i < 4; i++) {
-			snake00.snakeMove('D');
-			snake00.drawSnake();
-			Thread.sleep(500);
-			Panel.printPanel();
-		}
-//		
-		
-	
-		
-		
-//		我的问题是什么?
-//		现在静态保存的那个数组的走位是对的, 当蛇运动的时候, 数组中每一个点的符号都是对的, 问题是怎么打印这个数组的问题
-//		需要用线程来控制蛇的运动, 比如每过1秒行动一步.
-//		但是边框只能打印一次, 而不是蛇每移动一步就打印一次边框, 这样会生成多个边框
-//		蛇的走位要打印多次, 这样才能有动画的效果, 
-//		
-//		现在的情况是,肯定需要打印多次, 但是怎样把蛇的走位每一次都那样在同一个边框里,
-		
-		
-	}
-}

@@ -1,4 +1,4 @@
-package com.xiao.snake.entities;
+package com.xiao.snake.view.console;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;

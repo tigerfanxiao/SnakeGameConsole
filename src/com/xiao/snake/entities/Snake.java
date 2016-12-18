@@ -3,10 +3,12 @@ package com.xiao.snake.entities;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Snake extends Panel{
+import com.xiao.snake.view.console.Panel;
+
+public class Snake extends Panel {
 	
-	static int beginWidth = Panel.PANEL_WIDTH / 2;
-	static int beginHeight = Panel.PANEL_HEIGHT / 2;
+	int beginWidth = getWidth() / 2;
+	int beginHeight = getHeight() / 2;
 	int lengthOfSnake = 4; 
 	char direction;
 	Point head = new Point(beginHeight, beginWidth);
@@ -24,9 +26,9 @@ public class Snake extends Panel{
 	public void drawSnake() {
 		Iterator<Point> snakeIterator = snake.iterator();
 		while(snakeIterator.hasNext()) {
-			Panel.changePoint(snakeIterator.next(), '#');
+			changePoint(snakeIterator.next(), '#');
 		}
-		Panel.changePoint(snake.getFirst(), '$'); //最后画头, 把第一个覆盖为$
+		changePoint(snake.getFirst(), '$'); //最后画头, 把第一个覆盖为$
 	}
 	
 /*
@@ -64,13 +66,13 @@ public class Snake extends Panel{
 			snake.addFirst(nextHeadOriginal);			
 		}
 //		默认情况下, 新增一个头结点就要抹去最后一个尾巴结点, 但是如果遇到食物@, 就不抹去最后一个结点, 使得蛇的身体增长
-		if(Panel.getMark(snake.getFirst()) != '@') {
-			Panel.changePoint(snake.removeLast(), ' ');
+		if(getMark(snake.getFirst()) != '@') {
+			changePoint(snake.removeLast(), ' ');
 		}
 		//如果遇到石头,就弹出Game over 退出虚拟机
-		if(Panel.getMark(snake.getFirst()) == '*' || Panel.getMark(snake.getFirst()) == '#') {
+		if(getMark(snake.getFirst()) == '*' || getMark(snake.getFirst()) == '#') {
 			drawSnake();
-			Panel.printPanel();
+			printPanel();
 			System.out.println("Game Over!");
 			System.exit(0);
 		}
