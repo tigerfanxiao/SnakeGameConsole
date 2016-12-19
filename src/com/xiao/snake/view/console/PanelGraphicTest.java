@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import com.xiao.snake.entities.Food;
 import com.xiao.snake.entities.Snake;
+import com.xiao.snake.entities.Snake.Direction;
 
 public class PanelGraphicTest {
 
@@ -12,9 +13,8 @@ public class PanelGraphicTest {
 		Panel myPanel = new Panel(20, 30);
 		Frame.makeBorder(myPanel);
 		Food food = new Food(myPanel);
-		food.showFood(food.foodGenerate());
+		food.showFood();
 		Snake snake = new Snake(myPanel);
-		snake.initiateSnake();
 		snake.drawSnake();
 		
 		PanelGraphic mPanelGraphic = new PanelGraphic(myPanel);
@@ -24,35 +24,10 @@ public class PanelGraphicTest {
 		mPanelGraphic.setVisible(true);
 		frame.setVisible(true);
 		
-		for (int i = 0; i < 5; i++) {
-			snake.snakeMove('R');
-			snake.drawSnake();
-			Thread.sleep(500);
-			mPanelGraphic.repaint();//repaint the snake
-		}
-		
-//snake move upward 3 points
-		for (int i = 0; i < 3; i++) {
-			snake.snakeMove('U');
-			snake.drawSnake();
-			Thread.sleep(500);
-			mPanelGraphic.repaint();
-		}
-		//snake move left 3 points
-		for (int i = 0; i < 3; i++) {
-			snake.snakeMove('L');
-			snake.drawSnake();
-			Thread.sleep(500);
-			mPanelGraphic.repaint();
-		}
-		//snake move downward 4 point
-		for (int i = 0; i < 4; i++) {
-			snake.snakeMove('D');
-			snake.drawSnake();
-			Thread.sleep(500);
-			mPanelGraphic.repaint();				
-		}
-		
+		snake.move(Direction.RIGHT, 5);
+		snake.move(Direction.UP, 3);
+		snake.move(Direction.LEFT, 3);
+		snake.move(Direction.DOWN, 4);		
 	}
 
 }

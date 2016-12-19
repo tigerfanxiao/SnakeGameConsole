@@ -10,11 +10,10 @@ public class SnakeTest {
 		Frame.makeBorder(panel);
 		// 随机生成食物
 		Food food = new Food(panel);
-		food.showFood(food.foodGenerate());
+		food.showFood();
 		panel.printPanel();
 		
 		Snake snake = new Snake(panel);
-		snake.initiateSnake();
 
 		snake.drawSnake();
 		panel.printPanel();

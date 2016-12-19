@@ -1,7 +1,6 @@
 package com.xiao.snake.view.console;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -18,12 +17,13 @@ public class PanelGraphic extends JPanel{
 	public void paint(Graphics g) {
 		for (int j = 0; j < mPanel.getHeight(); j++ ) {
 			for (int i = 0; i < mPanel.getWidth(); i++) {				
-				switch (mPanel.getMark(j, i)) {
+				switch (mPanel.getMark(i, j)) {
 				case '*':
 					g.setColor(Color.GRAY);
 					g.fill3DRect(20 * i, 20 * j, 20, 20, true);
 					break;
 				case '@':
+					// TODO: Change this implementation
 					g.setColor(Color.GREEN);
 					g.fill3DRect(20 * i, 20 * j, 20, 20, true);
 					break;

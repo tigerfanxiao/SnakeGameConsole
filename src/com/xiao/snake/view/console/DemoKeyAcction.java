@@ -15,9 +15,8 @@ public class DemoKeyAcction {
 		Panel myPanel = new Panel(20, 30);
 		Frame.makeBorder(myPanel);
 		Food food = new Food(myPanel);
-		food.showFood(food.foodGenerate());
+		food.showFood();
 		SnakeGraphic snake = new SnakeGraphic(myPanel);
-		snake.initiateSnake();
 		snake.drawSnake();
 		
 		PanelGraphic mPanelGraphic = new PanelGraphic(myPanel);
