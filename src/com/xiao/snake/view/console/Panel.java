@@ -18,7 +18,6 @@ public class Panel {
 		mPanel = new char[mHeight][mWidth];
 	}
 
-	// TODO:
 	/**
 	 * Store the char mark on the point with coordinate (y, x) if there is a
 	 * square of boarder, mark '*' if there is a food, mark '@' if there is a
@@ -35,7 +34,6 @@ public class Panel {
 		mPanel[y][x] = mark;
 	}
 
-	// TODO: Please document this properly
 	/**
 	 * overloaded method of changePoint(), with coordinate of Point
 	 * 
@@ -48,7 +46,6 @@ public class Panel {
 		mPanel[p.getY()][p.getX()] = mark;
 	}
 
-	// TODO: Please document this properly
 	/**
 	 * show the panel with all the marks on it
 	 */
@@ -61,7 +58,6 @@ public class Panel {
 		}
 	}
 
-	// TODO: Please document this properly
 	/**
 	 * get the mark on the position
 	 * @param Point

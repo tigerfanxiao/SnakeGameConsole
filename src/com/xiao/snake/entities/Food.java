@@ -4,7 +4,11 @@ import java.util.Random;
 
 import com.xiao.snake.view.console.Panel;
 
-// TODO: create food with the char '@' on the panel for snake to eat
+/**
+ * create food with the char '@' on the panel for snake to eat
+ * @author Xiao
+ *
+ */
 public class Food {
 	private Panel mPanel;
 	private int mX;

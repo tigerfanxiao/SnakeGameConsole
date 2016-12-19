@@ -9,7 +9,6 @@ public class Snake {
 	private Panel mPanel;
 	public Snake(Panel panel) {
 		mPanel = panel;
-		Point head = new Point(mPanel.getWidth() / 2, mPanel.getHeight() / 2);
 	}
 	
 	int lengthOfSnake = 4; // the length of snake
@@ -39,8 +38,6 @@ public class Snake {
 		mPanel.markPoint(snake.getFirst(), '$'); // store the mark of head with char $
 	}
 
-	 
-	//TODO: could use  +1 -1, +2, -2 to represent four directions
 	/**
 	 * Snake will change the moving direction if it is received the command of directions.
 	 * If there is no command of changing direction or the direction
