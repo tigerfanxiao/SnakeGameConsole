@@ -1,9 +1,5 @@
 package com.xiao.snake.entities;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
-
 import com.xiao.snake.view.console.Frame;
 import com.xiao.snake.view.console.Panel;
 
