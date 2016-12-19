@@ -5,7 +5,7 @@ import java.util.Random;
 import com.xiao.snake.view.console.Panel;
 
 // TODO: create food with the char '@' on the panel for snake to eat
-public class Food extends Panel {
+public class Food {
 	private Panel mPanel;
 	private int mX;
 	private int mY;
@@ -34,7 +34,7 @@ public class Food extends Panel {
 	 */
 	public void showFood(Point p) {
 		while(mPanel.getPanel()[p.getY()][p.getX()] == ' ') {
-			mPanel.changePoint(p, '@');
+			mPanel.markPoint(p, '@');
 			break;
 		}
 		

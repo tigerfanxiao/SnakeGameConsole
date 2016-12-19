@@ -1,6 +1,6 @@
 package com.xiao.snake.entities;
 /**
- * class of coordinate of each point on he panel
+ * class of coordinate of each point on the panel
  * @author Xiao
  *
  */

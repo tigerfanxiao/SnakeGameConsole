@@ -3,76 +3,91 @@ package com.xiao.snake.view.console;
 import com.xiao.snake.entities.Point;
 
 public class Panel {
-	//
-	private final int width = 30;
-	private final int height = 10;
-	private char[][] mPanel = new char[height][width];
+
+	private int mWidth;// the width of panel
+	private int mHeight;// the height of panel
+	private char[][] mPanel;// initiate the instance of panel
 	
-	
-	// TODO: 
+	public Panel() {
+		super();
+	}
+
+	public Panel(int height, int width) {
+		mWidth = width;
+		mHeight = height;
+		mPanel = new char[mHeight][mWidth];
+	}
+
+	// TODO:
 	/**
-	 * method changePoint
-	 * to store the char mark on the point with coordinate (y, x)
-	 * if there is a square of boarder, mark '*'
-	 * if there is a food, mark '@'
-	 * if there is a head of snake, mark '$'
-	 * if there is a body of snake, mark '#'
-	 * @param y is the height of coordinate
-	 * @param x is the width of coordinate
+	 * Store the char mark on the point with coordinate (y, x) if there is a
+	 * square of boarder, mark '*' if there is a food, mark '@' if there is a
+	 * head of snake, mark '$' if there is a body of snake, mark '#'
+	 * 
+	 * @param y
+	 *            is the height of coordinate
+	 * @param x
+	 *            is the width of coordinate
 	 * @param mark
+	 *            used to show on the panel
 	 */
-	public void changePoint(int y, int x, char mark) {
+	public void markPoint(int y, int x, char mark) {
 		mPanel[y][x] = mark;
 	}
-	
+
 	// TODO: Please document this properly
 	/**
-	 * overloaded method of changePoint(), with coordinate of Point 
-	 * @param Point p
-	 * @param char mark
+	 * overloaded method of changePoint(), with coordinate of Point
+	 * 
+	 * @param Point
+	 *            p
+	 * @param char
+	 *            mark
 	 */
-	public void changePoint(Point p, char mark) {
+	public void markPoint(Point p, char mark) {
 		mPanel[p.getY()][p.getX()] = mark;
 	}
-	
+
 	// TODO: Please document this properly
 	/**
 	 * show the panel with all the marks on it
 	 */
 	public void printPanel() {
-		for(int i = 0; i < mPanel.length; i++) {
-			for(int j = 0; j< mPanel[i].length; j++) {
+		for (int i = 0; i < mPanel.length; i++) {
+			for (int j = 0; j < mPanel[i].length; j++) {
 				System.out.print(mPanel[i][j]);
 			}
 			System.out.print("\r\n");
 		}
 	}
-	
-	//get the mark of the position
+
 	// TODO: Please document this properly
 	/**
-	 * 
+	 * get the mark on the position
 	 * @param Point
 	 * @return the mark stored on the point p
 	 */
-	public  char getMark(Point p) {
+	public char getMark(Point p) {
 		return mPanel[p.getY()][p.getX()];
 	}
+	public char getMark(int height, int width) {
+		return mPanel[height][width];
+	}
+
 	/**
-	 * 
 	 * @return width of panel
 	 */
 	public int getWidth() {
-		return width;
+		return mWidth;
 	}
+
 	/**
-	 * 
 	 * @return height of panel
 	 */
 	public int getHeight() {
-		return height;
+		return mHeight;
 	}
-	
+
 	/**
 	 * @return an instance of panel
 	 */

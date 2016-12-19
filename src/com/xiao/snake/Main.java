@@ -6,51 +6,51 @@ import com.xiao.snake.view.console.Frame;
 import com.xiao.snake.view.console.Panel;
 
 public class Main {
-	public static void main(String[] args) throws InterruptedException  {
-		Panel panel = new Panel();
+	public static void main(String[] args) throws InterruptedException {
+		Panel panel = new Panel(10, 30);
 
-//		画出边界
+		// 画出边界
 		Frame.makeBorder(panel);
-		
-//		随机生成食物
-		Food food = new Food(panel);
 
+		// 随机生成食物
+		Food food = new Food(panel);
 		food.showFood(food.foodGenerate());
-//		创蛇
-		Snake snake00 = new Snake();
-//		蛇在初始位置
-		snake00.initiateSnake();
-		
-		panel.changePoint(5, 18, '@');
-		panel.changePoint(5, 20, '@');
-		
-		for(int i = 0; i < 5; i++) {
-			snake00.snakeMove('R');
-			snake00.drawSnake();
+		// 创蛇
+		Snake snake = new Snake(panel);
+		snake.initiateSnake();
+
+		// test if the snake would become longer when it eat food
+		// panel.changePoint(5, 18, '@');
+		// panel.changePoint(5, 20, '@');
+
+		//snake move right 5 points
+		for (int i = 0; i < 5; i++) {
+			snake.snakeMove('R');
+			snake.drawSnake();
 			Thread.sleep(500);
 			panel.printPanel();
 		}
-		
-		for(int i = 0; i < 3; i++) {
-			snake00.snakeMove('U');
-			snake00.drawSnake();
+		//snake move upward 3 points
+		for (int i = 0; i < 3; i++) {
+			snake.snakeMove('U');
+			snake.drawSnake();
 			Thread.sleep(500);
 			panel.printPanel();
 		}
-		
-		for(int i = 0; i < 3; i++) {
-			snake00.snakeMove('L');
-			snake00.drawSnake();
+		//snake move left 3 points
+		for (int i = 0; i < 3; i++) {
+			snake.snakeMove('L');
+			snake.drawSnake();
 			Thread.sleep(500);
 			panel.printPanel();
 		}
-		
-		for(int i = 0; i < 4; i++) {
-			snake00.snakeMove('D');
-			snake00.drawSnake();
+		//snake move downward 4 point
+		for (int i = 0; i < 4; i++) {
+			snake.snakeMove('D');
+			snake.drawSnake();
 			Thread.sleep(500);
 			panel.printPanel();
 		}
-		
+
 	}
 }

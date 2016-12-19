@@ -14,13 +14,13 @@ public class FrameInitiation {
 	public static void FrameInit(JFrame jframe, int height, int width){
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension d = toolkit.getScreenSize();
-		double x = d.getWidth();
 		double y = d.getHeight();
+		double x = d.getWidth();
 		
 		jframe.setBounds((int)(x - width) / 2, (int)(y - height) / 2, width, height);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		jframe.setVisible(true);
+		//jframe.setVisible(true);
 	}
 	
 }

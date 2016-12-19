@@ -6,9 +6,9 @@ public class Frame extends Panel {
 			for (int j = 0; j < panel.getPanel()[i].length; j++) {
 				if ((i == 0 || i == panel.getPanel().length - 1) || 
 						(j == 0 || j == panel.getPanel()[i].length - 1)) {
-					panel.changePoint(i, j, '*');
+					panel.markPoint(i, j, '*');
 				} else {
-					panel.changePoint(i, j, ' ');
+					panel.markPoint(i, j, ' ');
 				}
 			}
 		}
