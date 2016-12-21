@@ -1,42 +1,43 @@
 package com.xiao.snake.entities;
 
 import com.xiao.snake.view.console.Frame;
-import com.xiao.snake.view.console.Panel;
 
 public class Game {
-	private Panel mPanel;
-	private Food mFood;
+	private Mapp mMapp;
 	private Snake mSnake;
-	
+
 	public Game() {
-		this(new Panel());
+		this(new Mapp());
 	}
-	
-	public Game (Panel panel) {
+
+	public Game(Mapp panel) {
 		if (panel == null) {
-			panel = new Panel();
+			panel = new Mapp();
 			// TODO: LOG that it has been initialized with default values
-		} 
-		
-		mPanel = panel;
-		
-		this.initialize(mPanel);
+		}
+
+		mMapp = panel;
+
+		this.initialize(mMapp);
 
 	}
-	
+
+	public Mapp getMapp() {
+		return mMapp;
+	}
+
 	public Snake getSnake() {
 		return mSnake;
 	}
-		
-	private void initialize(Panel panel) {
+
+	private void initialize(Mapp mapp) {
 		// 画出边界
-		Frame.makeBorder(panel);
+		Frame.makeBorder(mapp);
 
 		// 随机生成食物
-		mFood = new Food(panel);
-		mFood.showFood();
-		
+		mapp.setMark(mapp.getEmptyRandomInnerPoint(), MapElement.FOOD);
+
 		// 创蛇
-		mSnake = new Snake(panel);
+		mSnake = new Snake(mapp.getMiddle());
 	}
 }

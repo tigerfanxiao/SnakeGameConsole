@@ -3,30 +3,25 @@ package com.xiao.snake.entities;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.xiao.snake.view.console.Panel;
-
 public class Snake {
 	// TODO: Add proper comments
 	private static int DEFAULT_LENGTH = 4;
 	private int mLength;
-	private Panel mPanel;
 	private LinkedList<Point> mBody = new LinkedList<>(); // the body of the
 															// snake
 
 	// TODO: Add proper comments
 	public enum Direction {
-		LEFT, RIGHT, UP, DOWN
+		LEFT, RIGHT, UP, DOWN;
 	}
 
 	// TODO: Add proper comments
-	public Snake(Panel panel) {
-		this(panel, DEFAULT_LENGTH);
+	public Snake(Point position) {
+		this(position, DEFAULT_LENGTH);
 	}
 
 	// TODO: Add proper comments
-	public Snake(Panel panel, int length) {
-		mPanel = panel;
-
+	public Snake(Point position, int length) {
 		// TODO: Check the length correctly. This is just an example
 		if (length <= 0) {
 			mLength = DEFAULT_LENGTH;
@@ -35,19 +30,21 @@ public class Snake {
 			mLength = length;
 		}
 
-		this.initialize(mBody, mLength, panel.getWidth() / 2, panel.getHeight() / 2);
+		// TODO: Review where the width and height are located
+		this.initialize(mBody, mLength, position.getX(), position.getY());
 	}
 
 	/**
 	 * store the mark of head and body of the snake on the panel
 	 */
-	public void drawSnake() {
+	public void drawSnake(Mapp mapp) {
 		Iterator<Point> snakeIterator = mBody.iterator();
 		while (snakeIterator.hasNext()) {
-			mPanel.markPoint(snakeIterator.next(), '#');
+			mapp.setMark(snakeIterator.next(), MapElement.SNAKE_BODY);
 		}
-		mPanel.markPoint(mBody.getFirst(), '$'); // store the mark of head with
-													// char $
+
+		// store the mark of head
+		mapp.setMark(mBody.getFirst(), MapElement.SNAKE_HEAD);
 	}
 
 	/**
@@ -62,7 +59,7 @@ public class Snake {
 	 * @param char
 	 *            for direction
 	 */
-	public void snakeMove(Direction direction) {
+	public void snakeMove(Mapp mapp, Direction direction) {
 		// nextHeadCurrentDirction store the next position of head of snake, if
 		// the
 		// snake keep the current of direction
@@ -99,14 +96,15 @@ public class Snake {
 		}
 		// if the snake eat the food, the length of its body will enlarge with
 		// one unit.
-		if (mPanel.getMark(mBody.getFirst()) != Food.SYMBOL) {
-			mPanel.markPoint(mBody.removeLast(), ' ');
+		if (mapp.getMark(mBody.getFirst()) != MapElement.FOOD) {
+			mapp.setMark(mBody.removeLast(), MapElement.EMPTY);
 		}
 		// If the snake touch the boarder or eat its own body, Game Over, the
 		// thread exits JVM
-		if (mPanel.getMark(mBody.getFirst()) == '*' || mPanel.getMark(mBody.getFirst()) == '#') {
-			drawSnake();
-			mPanel.printPanel();
+		if (mapp.getMark(mBody.getFirst()) == MapElement.WALL
+				|| mapp.getMark(mBody.getFirst()) == MapElement.SNAKE_BODY) {
+			drawSnake(mapp);
+			mapp.print();
 			System.out.println("Game Over!");
 			System.exit(0);
 		}
@@ -127,29 +125,28 @@ public class Snake {
 		return nextPoint;
 	}
 
-	public void move(Direction direction, int steps) {
+	public void move(Mapp mapp, Direction direction, int steps) {
 		// snake move downward 4 point
 		for (int i = 0; i < steps; i++) {
-			snakeMove(direction);
-			drawSnake();
+			snakeMove(mapp, direction);
+			drawSnake(mapp);
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			mPanel.printPanel();
+			mapp.print();
 		}
 	}
 
 	/**
 	 * store the position of head and body of snake in the Linkedlist
 	 */
-	private void initialize(LinkedList<Point> body, int length, int posX, int posY) {
+	private void initialize(LinkedList<Point> body, int length, int x, int y) {
 		// ToDo: Check if the length is bigger than width and height.
 		// Initialize by a default value if not.
 
-		Point head = new Point(posX, posY);
+		Point head = new Point(x, y);
 		body.addLast(head);
 		for (int i = 1; i < length; i++) {
 			body.addLast(new Point(head.getX() - i, head.getY()));

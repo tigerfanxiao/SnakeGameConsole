@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import com.xiao.snake.view.console.FrameInitiation;
-
 public class Controler {
 	public static void main(String[] args) {
 		JFrame controler = new JFrame("control of direction");
