@@ -3,7 +3,6 @@ package com.xiao.snake.entities;
 import java.util.Iterator;
 
 import com.xiao.snake.entities.Snake.Direction;
-import com.xiao.snake.view.console.FrameConsole;
 import com.xiao.snake.view.console.MappConsole;
 
 public class Game {
@@ -66,7 +65,7 @@ public class Game {
 	// TODO Xiao Add proper documentation
 	private void initialize(Mapp mapp) {
 		// 画出边界
-		FrameConsole.makeBorder(mapp);
+		Frame.makeBorder(mapp);
 
 		// 随机生成食物
 		mapp.setMark(mapp.getEmptyRandomInnerPoint(), MapElement.FOOD);

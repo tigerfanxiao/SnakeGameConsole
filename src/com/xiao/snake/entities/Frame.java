@@ -1,9 +1,6 @@
-package com.xiao.snake.view.console;
+package com.xiao.snake.entities;
 
-import com.xiao.snake.entities.MapElement;
-import com.xiao.snake.entities.Mapp;
-
-public class FrameConsole extends MappConsole {
+public class Frame {
 	/**
 	 * show the boarder on the panel
 	 * 
@@ -29,4 +26,5 @@ public class FrameConsole extends MappConsole {
 			panel.markPoint(i, panel.getHeight() - 1, MapElement.WALL);
 		}
 	}
+
 }

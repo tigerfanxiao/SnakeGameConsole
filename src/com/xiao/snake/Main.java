@@ -9,10 +9,10 @@ import com.xiao.snake.entities.Snake.Direction;
 import com.xiao.snake.view.console.MappConsole;
 
 public class Main {
+	// TODO MMZ2 Being able to read logging configuration from file
 	private final static Logger logger = Logger.getLogger(Main.class.getName());
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO MMZ2 Being able to read logging configuration from file
 		logger.info("Prueba");
 		Game game = new Game(new MappConsole(40, 20));
 
