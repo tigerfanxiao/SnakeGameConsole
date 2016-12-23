@@ -14,7 +14,7 @@ public class MapElementFormatter {
 		case SNAKE_HEAD:
 			return '$';
 		default:
-			// TODO: Add log. Unexpected error.
+			// TODO Xiao Add log. Unexpected error.
 			return ' ';
 		}
 	}

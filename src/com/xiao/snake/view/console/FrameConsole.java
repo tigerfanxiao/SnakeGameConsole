@@ -3,7 +3,7 @@ package com.xiao.snake.view.console;
 import com.xiao.snake.entities.MapElement;
 import com.xiao.snake.entities.Mapp;
 
-public class Frame extends Mapp {
+public class FrameConsole extends MappConsole {
 	/**
 	 * show the boarder on the panel
 	 * 

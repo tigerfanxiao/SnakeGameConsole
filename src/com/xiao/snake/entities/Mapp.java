@@ -2,15 +2,13 @@ package com.xiao.snake.entities;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.xiao.snake.view.console.MapElementFormatter;
-
-public class Mapp {
+public abstract class Mapp {
 	public static int DEFAULT_HEIGHT = 10;
 	public static int DEFAULT_WIDTH = 30;
 
-	private int mWidth;// the width of panel
-	private int mHeight;// the height of panel
-	private MapElement[][] mPanel;// initiate the instance of panel
+	protected int mWidth;// the width of panel
+	protected int mHeight;// the height of panel
+	protected MapElement[][] mPanel;// initiate the instance of panel
 
 	public Mapp() {
 		this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -31,10 +29,12 @@ public class Mapp {
 		mPanel = new MapElement[mWidth][mHeight];
 	}
 
+	// TODO Xiao Document me properly
+	public abstract void print();
+
 	/**
-	 * Store the char mark on the point with coordinate (y, x) if there is a
-	 * square of boarder, mark '*' if there is a food, mark Food.SYMBOL if there
-	 * is a head of snake, mark '$' if there is a body of snake, mark '#'
+	 * Store the char mark on the point with coordinate (y, x) if there is a square of boarder, mark '*' if there is a
+	 * food, mark Food.SYMBOL if there is a head of snake, mark '$' if there is a body of snake, mark '#'
 	 * 
 	 * @param y
 	 *            is the height of coordinate
@@ -57,18 +57,6 @@ public class Mapp {
 	 */
 	public void setMark(Point p, MapElement mark) {
 		mPanel[p.getX()][p.getY()] = mark;
-	}
-
-	/**
-	 * show the panel with all the marks on it
-	 */
-	public void print() {
-		for (int j = 0; j < mHeight; j++) {
-			for (int i = 0; i < mWidth; i++) {
-				System.out.print(MapElementFormatter.toChar((mPanel[i][j])));
-			}
-			System.out.print("\r\n");
-		}
 	}
 
 	/**
