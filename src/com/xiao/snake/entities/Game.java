@@ -49,7 +49,6 @@ public class Game {
 				mMapp.setMark(snake.getBody().removeLast(), MapElement.EMPTY);
 			}
 
-			// Draw the snake
 			draw(snake);
 			mMapp.print();
 
@@ -62,20 +61,24 @@ public class Game {
 		}
 	}
 
-	// TODO Xiao Add proper documentation
+	/**
+	 * @param mapp
+	 */
 	private void initialize(Mapp mapp) {
-		// 画出边界
+		// mark wall on the panel
 		Frame.makeBorder(mapp);
 
-		// 随机生成食物
+		// mark food on the panel
 		mapp.setMark(mapp.getEmptyRandomInnerPoint(), MapElement.FOOD);
 
-		// 创蛇
+		//
 		mSnake = new Snake(mapp.getMiddle());
 	}
 
 	/**
-	 * TODO Xiao Add parameters store the mark of head and body of the snake on the panel
+	 * mark of head and body of the snake on the panel
+	 * 
+	 * @param snake
 	 */
 	private void draw(Snake snake) {
 		Iterator<Point> snakeIterator = snake.getBody().iterator();

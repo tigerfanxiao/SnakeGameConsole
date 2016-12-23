@@ -3,24 +3,36 @@ package com.xiao.snake.entities;
 import java.util.LinkedList;
 
 public class Snake {
-	// TODO Xiao Add proper comments
-	private static int DEFAULT_LENGTH = 4;
-	private int mLength;
+
+	private static int DEFAULT_LENGTH = 4;// the default length of snake
+	private int mLength;// the current length of snake
 	private LinkedList<Point> mBody = new LinkedList<>(); // the body of the snake
 
-	// TODO Xiao Add proper comments
+	/**
+	 * four direction snake moves in the mapp
+	 * 
+	 * @author Xiao
+	 */
 	public enum Direction {
 		LEFT, RIGHT, UP, DOWN;
 	}
 
-	// TODO Xiao Add proper comments
+	/**
+	 * Constructor of snake with parameter of position of the head of the snake, at the beginning of the game
+	 * 
+	 * @param position
+	 */
 	public Snake(Point position) {
 		this(position, DEFAULT_LENGTH);
 	}
 
-	// TODO Xiao Add proper comments
+	/**
+	 * Constructor of snake with two parameters: position of the head of snake and the length of snake
+	 * 
+	 * @param position
+	 * @param length
+	 */
 	public Snake(Point position, int length) {
-		// TODO Xiao Check the length correctly. This is just an example
 		if (length <= 0) {
 			mLength = DEFAULT_LENGTH;
 			// TODO Xiao Add a log to indicate that the length passed is incorrect
@@ -64,18 +76,22 @@ public class Snake {
 		mBody.addFirst(nextStep);
 	}
 
-	// TODO Xiao Add comments
+	/**
+	 * @return the point of head
+	 */
 	public Point getHead() {
 		return mBody.getFirst();
 	}
 
-	// TODO Xiao Add comments
+	/**
+	 * @return the list of points of body
+	 */
 	public LinkedList<Point> getBody() {
 		return mBody;
 	}
 
 	/**
-	 * store the position of head and body of snake in the Linkedlist
+	 * Initialize the list of points of body of snake.
 	 */
 	private void initialize(LinkedList<Point> body, int length, int x, int y) {
 		// ToDo: Check if the length is bigger than width and height.

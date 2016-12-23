@@ -8,10 +8,44 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.xiao.snake.entities.Mapp;
+import com.xiao.snake.view.console.MappConsole;
 
-public class MappGraphic extends Mapp {
-	private JPanel mJPanel = new JPanel();
+public class MappGraphic extends MappConsole {
+	private JPanel mJPanel = new JPanel() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		// @Override
+		public void paint(Graphics g) {
+			// Graphics g = mJPanel.getGraphics();
+			for (int j = 0; j < mHeight; j++) {
+				for (int i = 0; i < mWidth; i++) {
+					switch (mPanel[i][j]) {
+					case WALL:
+						g.setColor(Color.GRAY);
+						g.fill3DRect(20 * i, 20 * j, 20, 20, true);
+						break;
+					case FOOD:
+						g.setColor(Color.GREEN);
+						g.fill3DRect(20 * i, 20 * j, 20, 20, true);
+						break;
+					case SNAKE_HEAD:
+						g.setColor(Color.RED);
+						g.fill3DRect(20 * i, 20 * j, 20, 20, true);
+						break;
+					case SNAKE_BODY:
+						g.setColor(Color.BLUE);
+						g.fill3DRect(20 * i, 20 * j, 20, 20, true);
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
+	};
 	private JFrame mJFrame;
 
 	public MappGraphic() {
@@ -47,35 +81,6 @@ public class MappGraphic extends Mapp {
 
 		jframe.setBounds((int) (screenWidth - width) / 2, (int) (screenHeight - height) / 2, width, height);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-
-	@Override
-	public void print() {
-		Graphics g = mJPanel.getGraphics();
-		for (int j = 0; j < mHeight; j++) {
-			for (int i = 0; i < mWidth; i++) {
-				switch (mPanel[i][j]) {
-				case WALL:
-					g.setColor(Color.GRAY);
-					g.fill3DRect(20 * i, 20 * j, 20, 20, true);
-					break;
-				case FOOD:
-					g.setColor(Color.GREEN);
-					g.fill3DRect(20 * i, 20 * j, 20, 20, true);
-					break;
-				case SNAKE_HEAD:
-					g.setColor(Color.RED);
-					g.fill3DRect(20 * i, 20 * j, 20, 20, true);
-					break;
-				case SNAKE_BODY:
-					g.setColor(Color.BLUE);
-					g.fill3DRect(20 * i, 20 * j, 20, 20, true);
-					break;
-				default:
-					break;
-				}
-			}
-		}
 	}
 
 	public JFrame getFrame() {

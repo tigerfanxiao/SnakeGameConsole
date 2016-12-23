@@ -119,6 +119,11 @@ public abstract class Mapp {
 		return result;
 	}
 
+	/**
+	 * return the middle point of the panel
+	 * 
+	 * @return
+	 */
 	public Point getMiddle() {
 		return new Point(getWidth() / 2, getHeight() / 2);
 	}
