@@ -2,13 +2,17 @@ package com.xiao.snake.entities;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Mapp {
+public class Mapp {
+	protected int mWidth;// the width of panel
+	protected int mHeight;// the height of panel
+	protected MappElement[][] mPanel;// initiate the instance of panel
+
 	public static int DEFAULT_HEIGHT = 10;
 	public static int DEFAULT_WIDTH = 30;
 
-	protected int mWidth;// the width of panel
-	protected int mHeight;// the height of panel
-	protected MapElement[][] mPanel;// initiate the instance of panel
+	public enum MappElement {
+		FOOD, WALL, SNAKE_BODY, SNAKE_HEAD, EMPTY
+	}
 
 	public Mapp() {
 		this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -26,11 +30,8 @@ public abstract class Mapp {
 		mWidth = width;
 		mHeight = height;
 
-		mPanel = new MapElement[mWidth][mHeight];
+		mPanel = new MappElement[mWidth][mHeight];
 	}
-
-	// TODO Xiao Document me properly
-	public abstract void print();
 
 	/**
 	 * Store the char mark on the point with coordinate (y, x) if there is a square of boarder, mark '*' if there is a
@@ -43,7 +44,7 @@ public abstract class Mapp {
 	 * @param mapElement
 	 *            used to show on the panel
 	 */
-	public void markPoint(int x, int y, MapElement mapElement) {
+	public void markPoint(int x, int y, MappElement mapElement) {
 		mPanel[x][y] = mapElement;
 	}
 
@@ -55,7 +56,7 @@ public abstract class Mapp {
 	 * @param char
 	 *            mark
 	 */
-	public void setMark(Point p, MapElement mark) {
+	public void setMark(Point p, MappElement mark) {
 		mPanel[p.getX()][p.getY()] = mark;
 	}
 
@@ -65,11 +66,11 @@ public abstract class Mapp {
 	 * @param Point
 	 * @return the mark stored on the point p
 	 */
-	public MapElement getMark(Point p) {
+	public MappElement getMark(Point p) {
 		return mPanel[p.getX()][p.getY()];
 	}
 
-	public MapElement getMark(int width, int height) {
+	public MappElement getMark(int width, int height) {
 		return mPanel[width][height];
 	}
 
@@ -90,7 +91,7 @@ public abstract class Mapp {
 	/**
 	 * @return an instance of panel
 	 */
-	public MapElement[][] getPanel() {
+	public MappElement[][] getPanel() {
 		return mPanel;
 	}
 
@@ -110,7 +111,7 @@ public abstract class Mapp {
 			int x = ThreadLocalRandom.current().nextInt(1, getWidth() - 2);
 			int y = ThreadLocalRandom.current().nextInt(1, getHeight() - 2);
 
-			if (getMark(x, y) == MapElement.EMPTY) {
+			if (getMark(x, y) == MappElement.EMPTY) {
 				result = new Point(x, y);
 				notEmptyPointFound = false;
 			}

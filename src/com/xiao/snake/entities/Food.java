@@ -6,5 +6,5 @@ package com.xiao.snake.entities;
  * @author Xiao
  */
 public class Food {
-	// TODO MMZ Rethink if this method is needed anymore
+	// TODO Xiao Rethink if this method is needed anymore
 }

@@ -107,16 +107,21 @@ public class Snake {
 	/**
 	 * @return the next point where the head of snake would show if no command of changing direction
 	 */
-	private Point calculateNextStepNoInteraction() {
-		Point nextPoint;
-		if (mBody.get(0).getY() == mBody.get(1).getY()) {
+	public Direction getDirection() {
+		if (mBody.get(1).getY() == getHead().getY()) {
 			// The snake is moving horizontally
-			nextPoint = new Point(2 * mBody.get(0).getX() - mBody.get(1).getX(), mBody.get(0).getY());
+			if (mBody.get(1).getX() == getHead().getX() - 1) {
+				return Direction.RIGHT;
+			} else {
+				return Direction.LEFT;
+			}
 		} else {
-			nextPoint = new Point(mBody.get(0).getX(), 2 * mBody.get(0).getY() - mBody.get(1).getY());
+			if (mBody.get(1).getY() == getHead().getY() - 1) {
+				return Direction.DOWN;
+			} else {
+				return Direction.UP;
+			}
 		}
-
-		return nextPoint;
 	}
 
 }
